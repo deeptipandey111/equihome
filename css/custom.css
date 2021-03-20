@@ -3,7 +3,9 @@ h2 {
     font-size: 2.8rem !important;
     font-weight: 700;
 }
-
+h3{
+    color: #00e69c; !important;
+}
 img {
     display: block;
     max-width: 100%;
@@ -11,15 +13,80 @@ img {
 .imgphone {
   height: 609px;
   object-fit: contain;
-  /*width:100%;*/
-  /*max-width: 50%;
-  max-height: 50%;*/
-  /*max-width: 400px;
-  height: auto;*/
+}
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  /*background-color: dodgerblue;
+  color: white;*/
+}
+
+.header-right {
+  float: right;
+}
+
+.logoimg {
+    width: 300px;
+    height: 50px;
+    object-fit: scale-down;
+}
+.logotop img {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+.header img{
+float: left;
+  width: 100px;
+  height: 100px;
+}
+
+.logotop h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+  color:#51b848;
+}
+.header h1{
+  position: relative;
+  top: 18px;
+  left: 10px;
+  color:#51b848;
+}
+.header-right {
+  float: right;
 }
 a,
 button {
     cursor: pointer;
+}
+.logotop a{
+    cursor: none;
 }
 
 .jumbotron {
@@ -43,7 +110,7 @@ button {
 }
 
 .cta-green {
-    background: #00FFAD;
+    background: #51b848;
     color: #192440;
 }
 
@@ -124,13 +191,13 @@ button {
 }
 
 #contact form {
-    color: #00FFAD;
+    color: #51b848;
 }
 
 #contact form input,
 #contact form textarea {
     background: transparent;
-    border: 1px solid #00FFAD;
+    border: 1px solid #51b848;
     color: #ffffff;
 }
 
