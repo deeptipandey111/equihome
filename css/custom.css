@@ -4,7 +4,7 @@ h2 {
     font-weight: 700;
 }
 h3{
-    color: #00e69c; !important;
+    color: #51b848; !important;
 }
 img {
     display: block;
@@ -19,7 +19,17 @@ img {
   background-color: #f1f1f1;
   padding: 20px 10px;
 }
-
+.feature-creator{
+        background: #192440;
+}
+.feature-creator h3, .feature-creator p{
+    color: white;
+}
+.feature-creator img{
+    width: 150px;
+    height: 150px;
+    object-fit: scale-down;
+}
 .header a {
   float: left;
   color: black;
@@ -116,7 +126,7 @@ button {
 
 .cta-green:hover {
     color: #ffffff;
-    background: #00e69c;
+    background: #51b848;
 }
 
 .cta-blue {
@@ -164,6 +174,10 @@ button {
 
 #feature-last {
     background: #00FFAD;
+}
+#feature-creator {
+    background: #192440;
+    
 }
 
 /********** price table **********/
@@ -222,7 +236,7 @@ button {
 }
 
 #copyright #social-media a:hover {
-    background: #00FFAD;
+    background: #51b848;
 }
 
 #copyright #social-media a:hover i {
