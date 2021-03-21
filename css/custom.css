@@ -249,3 +249,10 @@ button {
         font-size: 3.6rem;
     }
 }
+
+html, body {
+  overflow-x: hidden;
+}
+body {
+  position: relative
+}
