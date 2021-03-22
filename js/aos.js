@@ -29,7 +29,42 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+function SubForm (){
+  const $result = $("#result");
+  const email = $("#email").val();
+  $result.text("");
+
+  $.ajax({
+    url:"https://api.apispreadsheets.com/data/9859/",
+    type:"post",
+    data:$("#myForm").serializeArray(),
+    success: function(){
+      $result.text("Congrats! You are on the waitlist!");
+      $result.css("color", "green");
+    },
+    error: function(){
+      $result.text("Please enter a valid email.");
+      $result.css("color", "red");
+    }
+  });
+}
+
 function validate() {
+  $.ajax({
+            url:'https://api.apispreadsheets.com/data/410/',
+            headers: {"accessKey": "s1oqyym6vxb1xxuugge56bz8mn88gknt", "secretKey": "9uuh87dqxc9brxhgh2x4llmebkxjpo78"}
+            type:'post',
+            data:$("#myForm2").serializeArray(),
+            success: function(){
+              alert("Form Data Submitted :)")
+              console.log("success")
+            },
+            error: function(){
+              alert("There was an error :(")
+              console.log("fail")
+            }
+        });
+
   const $result = $("#result");
   const email = $("#email").val();
   $result.text("");
@@ -44,4 +79,20 @@ function validate() {
   return false;
 }
 
+function SubForm (){
+        $.ajax({
+            url:'https://api.apispreadsheets.com/data/410/',
+            headers: {"accessKey": "s1oqyym6vxb1xxuugge56bz8mn88gknt", "secretKey": "9uuh87dqxc9brxhgh2x4llmebkxjpo78"}
+            type:'post',
+            data:$("#myForm").serializeArray(),
+            success: function(){
+              alert("Form Data Submitted :)")
+              console.log("success")
+            },
+            error: function(){
+              alert("There was an error :(")
+              console.log("fail")
+            }
+        });
+    } 
 // $("#validate").on("click", validate);

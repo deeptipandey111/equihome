@@ -14,9 +14,43 @@
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     
     <!-- AOS -->
-    <link rel="stylesheet" href="css/aos.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+    <script>
+
+      function SubForm (){
+
+        const $result = $("#result");
+        $result.text("");
+        const email = $("#email").val();
+        if (! validateEmail(email)){
+            $result.text("Please enter a valid email");
+            $result.css("color", "#d45b50");
+            return false;
+        }
+        $.ajax({
+          url:"https://api.apispreadsheets.com/data/9859/",
+          type:"post",
+          data:$("#myForm").serializeArray(),
+          success: function(){
+            $result.text("Congrats! You are on the waitlist!");
+            $result.css("color", "green");
+          },
+          error: function(){
+            $result.text("Oops, there's an error, please try again later");
+            $result.css("color", "red");
+          }
+        });
+      }
+      function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
+
+    </script>
 </head>
 <body>
     <!-- banner -->
@@ -159,7 +193,7 @@
         </div>
     </div>
 
-   <!--  <!-- price table -->
+   <!--  price table -->
     <!-- <div class="container my-5 py-2" id="price-table">
         <h2 class="text-center font-weight-bold d-block mb-3">Check our pricing</h2>
         <div class="row">
@@ -198,7 +232,7 @@
             </div>
         </div>
     </div> --> 
-    <!-- <!-- client -->
+    <!-- client -->
     <!-- <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <div class="row">
@@ -237,24 +271,20 @@
                     
                 </div>
                 <div class="col-md-6">
-                    <form onsubmit="validate();return false;">
-                    	<div class="row">
-	                        <!-- <div class="form-group col-md-6">
-	                            <label for="name">Your Name</label>
-	                            <input type="name" class="form-control" id="name">
-	                        </div> -->
-	                        <div class="form-group col-md-6">
-	                            <!-- <label for="Email">Your Email</label> -->
-	                            <input type="email" class="form-control" id="email" placeholder="Your email address">
-	                        </div>
-	                    </div>
-	                    <!-- <div class="form-group">
-	                        <label for="message">Message</label>
-	                        <textarea class="form-control" id="message" rows="3"></textarea>
-	                    </div> -->
-                        <button type="submit" class="btn my-4 font-weight-bold atlas-cta cta-green">Join</button>
-                    </form>
-                    <h4 id='result'></h4>
+
+
+                    <form id="myForm">
+                        <div class="row">
+                        
+                            <div class="form-group col-md-6">
+                                <!-- <label for="Email">Your Email</label> -->
+                                <input name="email" type="email" id="email" class="form-control" placeholder="Your email address"/>
+                            </div>
+                        </div>
+
+                      </form>
+                      <button onclick="SubForm()" class="btn my-4 font-weight-bold atlas-cta cta-green">Join</button>
+                      <h4 id='result'></h4>
 
                 </div>
             </div>
