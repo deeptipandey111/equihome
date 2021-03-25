@@ -27,11 +27,16 @@
       function SubForm (){
 
         const $result = $("#result");
-        $result.text("");
+        $result.text("Processing...");
+        $result.css("color", "grey");
+        document.getElementById("joinbutton").disabled = true;
+
         const email = $("#email").val();
         if (! validateEmail(email)){
             $result.text("Please enter a valid email ");
             $result.css("color", "#d45b50");
+            document.getElementById("joinbutton").disabled = false;
+
             return false;
         }
         $.ajax({
@@ -39,10 +44,12 @@
           type:"post",
           data:$("#myForm").serializeArray(),
           success: function(){
+            document.getElementById("joinbutton").disabled = false;
             $result.text("Congrats! You are on the waitlist!");
             $result.css("color", "green");
           },
           error: function(){
+            document.getElementById("joinbutton").disabled = false;
             $result.text("Oops, there's an error, please try again later");
             $result.css("color", "red");
           }
@@ -90,7 +97,7 @@
                 Lorem ipsum dolor sit amet, id nec enim autem oblique, ei dico mentitum duo.
                 <br> Illum iusto laoreet his te. Lorem partiendo mel ex. Ad vitae admodum voluptatum per.
             </p> -->
-            <button onclick="smoothScroll(document.getElementById('contact'))" class="btn my-4 font-weight-bold atlas-cta cta-green">Join waitlist</button>
+            <button onclick="smoothScroll(document.getElementById('contact'))" class="btn my-4 font-weight-bold atlas-cta cta-green">Sign up!</button>
 
         </div>
     </div>
@@ -285,7 +292,7 @@
                         </div>
 
                       </form>
-                      <button onclick="SubForm()" class="btn my-4 font-weight-bold atlas-cta cta-green">Join</button>
+                      <button id="joinbutton" onclick="SubForm()" class="btn my-4 font-weight-bold atlas-cta cta-green">Join</button>
                       <h4 id='result'></h4>
 
                 </div>
