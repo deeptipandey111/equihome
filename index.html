@@ -78,6 +78,39 @@
         return re.test(email);
       }
 
+      function SubFormTop (){
+
+        const $resulttop = $("#resulttop");
+        $resulttop.text("Processing...");
+        $resulttop.css("color", "grey");
+        document.getElementById("joinbuttontop").disabled = true;
+
+        const emailtop = $("#emailtop").val();
+        if (! validateEmail(emailtop)){
+            $resulttop.text("Please enter a valid email ");
+            $resulttop.css("color", "#d45b50");
+            document.getElementById("joinbuttontop").disabled = false;
+
+            return false;
+        }
+        $.ajax({
+          url:"https://api.apispreadsheets.com/data/9859/",
+          type:"post",
+          data:$("#myFormtop").serializeArray(),
+          success: function(){
+            document.getElementById("joinbuttontop").disabled = false;
+            $resulttop.text("Congrats! You are on the waitlist!");
+            $resulttop.css("color", "green");
+          },
+          error: function(){
+            document.getElementById("joinbuttontop").disabled = false;
+            $resulttop.text("Oops, there's an error, please try again later");
+            $resulttop.css("color", "red");
+          }
+        });
+      }
+      
+
     </script>
 </head>
 <body>
@@ -109,13 +142,25 @@
                 </div>
             </header>
             <h1 data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="display-3 text-white font-weight-bold my-5">
-            	 Want more support from your partner?
+            	 Want to save 9 hours at household work?
             </h1>
             <!-- <p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="lead text-white my-4">
                 Lorem ipsum dolor sit amet, id nec enim autem oblique, ei dico mentitum duo.
                 <br> Illum iusto laoreet his te. Lorem partiendo mel ex. Ad vitae admodum voluptatum per.
             </p> -->
-            <button onclick="smoothScroll(document.getElementById('contact'))" class="btn my-4 font-weight-bold atlas-cta cta-green">Sign up!</button>
+            <form id="myFormtop">
+                <div class="row">
+                
+                    <div class="form-group col-md-6">
+                        <!-- <label for="Email">Your Email</label> -->
+                        <input name="email" type="email" id="emailtop" class="form-control" placeholder="Enter email address"/>
+                    </div>
+                </div>
+
+              </form>
+            <button onclick="SubFormTop()" id="joinbuttontop" class="btn my-4 font-weight-bold atlas-cta cta-green">Get early access!</button>
+            <h4 id='resulttop'>&nbsp</h4>
+
 
         </div>
     </div>
